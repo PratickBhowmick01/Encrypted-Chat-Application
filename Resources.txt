@@ -1,0 +1,11 @@
+- Socket Programming
+https://www.youtube.com/watch?v=3QiPPX-KeSc
+
+- Wireshark Tutorial
+https://www.youtube.com/watch?v=lb1Dw0elw0Q&t=68s
+
+- AES, RSA Tutorial
+https://www.youtube.com/watch?v=kb_scuDUHls
+https://www.youtube.com/watch?v=n0uJsqFGO4k
+https://www.youtube.com/watch?v=z-EnysBSstA&t=332s
+https://cryptobook.nakov.com/digital-signatures/rsa-sign-verify-examples
