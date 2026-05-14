@@ -24,7 +24,8 @@ def receive_msg(msg_B, aes_key):
 
 
 PORT = 5050
-SERVER = socket.gethostbyname(socket.gethostname())
+# SERVER = socket.gethostbyname(socket.gethostname())
+SERVER = "127.0.0.1"    
 ADDR = (SERVER, PORT)
 FORMAT = 'utf-8'
 
@@ -76,15 +77,20 @@ def start():
             print("Received Client B's public key.")
             
         elif msg_A == "/aes":
+            conn.send("secret_key".encode(FORMAT))
+            
             encrypted_aes_key = rsa.encrypt(aes_key, public_key_B) 
-            header = b'key'
-            conn.send(header + encrypted_aes_key + signature)
+            conn.send(encrypted_aes_key + signature)
             print("Secret shared key sent. Waitng for Client B's response...")     
             
             
             msg_B = conn.recv(2048).decode(FORMAT)
             print(f"[CLIENT B] {msg_B}")
-            ready = True 
+            
+            if "Secret key received!" in msg_B:
+                ready = True 
+                print("Ready for secure chat.")
+                continue
             
         else: 
             conn.send(msg_A.encode(FORMAT))
